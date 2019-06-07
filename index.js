@@ -83,18 +83,24 @@ function handleItemCheckClicked() {
 
 
 function handleDeleteItemClicked() {
-  $('.shopping-item-controls').on('click', '.shopping-item-delete', function(event) {
-    console.log('`handleDeleteItemClicked` ran')
+  $('.js-shopping-list').on('click', '.js-item-delete', function(event) {
+    console.log('`handleDeleteItemClicked` ran');
     //access item to be deleted
     const id = getItemIdFromElement(event.currentTarget);
     console.log(id);
-    //find that item within the data source
-    for 
-    //detele that item from the data source
-  })
-  
+    deleteItem(id);
+    // find that item within the data source
+    // detele that thang from the data source
+    renderShoppingList();
+  });
 }
-
+function deleteItem(idNum){
+  for (let i = 0; i < STORE.length; i++){
+    if (STORE[i].id === idNum){
+      STORE.splice(i, 1);
+    }
+  }
+}
 // this function will be our callback when the page loads. it's responsible for
 // initially rendering the shopping list, and activating our individual functions
 // that handle new item submission and user clicks on the "check" and "delete" buttons
